@@ -7,9 +7,8 @@
         <h1>Номер индивидуального задания: {{student.taskVar}}</h1>
         <h1>Текст индивидуального задания: {{student.taskDesc}}</h1>
     </header>
-    {{#links}}
-        <a href = "/{{.}}">{{.}}</a><br>
-    {{/links}}
+
+{{> navbar}}
 </section>
 
 {{> footer}}

@@ -11,3 +11,4 @@ data class Student (
         var taskDesc: String = "",
         @Id @GeneratedValue
         var id: Long = 0)
+

@@ -1,3 +1,29 @@
 {{> header}}
-<h1>Таблица</h1>
+{{>inputdialog}}
+<h1 >Таблица</h1>
+<!-- Editable table -->
+<div class="card">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Рейтинг приложений</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">Приложение</th>
+                    <th class="text-center">Разработчик</th>
+                    <th class="text-center">Год выпуска</th>
+                    <th class="text-center">Стартовый капитал</th>
+                    <th class="text-center"><span class="table-add mb-3 mr-2"><a href="#!" class="text-success"><i
+                            class="fas fa-plus fa-2x" aria-hidden="true">Добавить</i></a></span></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Editable table -->
+{{> navbar}}
 {{> footer}}

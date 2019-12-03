@@ -12,6 +12,5 @@ class LabaApplication
 fun main(args: Array<String>) {
 	runApplication<LabaApplication>(*args) {
 		setBannerMode(Banner.Mode.OFF)
-
 	}
 }
