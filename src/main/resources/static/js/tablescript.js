@@ -7,46 +7,71 @@ $(document).ready(function() {
  const $BTN = $('#export-btn');
  const $EXPORT = $('#export');
 
- const newTr = `
-<tr class="hide">
-  <td class="pt-3-half" contenteditable="true"><p id="field1"></p></td>
-  <td class="pt-3-half" contenteditable="true"></td>
-  <td class="pt-3-half" contenteditable="true"></td>
-  <td class="pt-3-half" contenteditable="true"></td>
+function saveToHtml(resultID, an, dn, rd, m) {
+ var newTr = `
+<tr class="hide" id=${resultID}>
+  <td class="pt-3-half td1">${an}</td>
+  <td class="pt-3-half td2">${dn}</td>
+  <td class="pt-3-half td3">${rd}</td>
+  <td class="pt-3-half td4">${m}</td>
   <td>
     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
     <span class="table-edit"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Редактировать</button></span>
   </td>
 </tr>`;
 
+    $tableID.find('table').append(newTr);
+}
+
+function ajaxPost() {
+var taskInput = {
+        appName: $(".appName").val(),
+        teamName: $(".developerName").val(),
+        releaseDate: $(".releaseDate").val(),
+        money: $(".money").val()
+    }
+
+    console.log(taskInput)
+
+    $.ajax({
+    type: "POST",
+    url: "/savedatatotable",
+    contentType: "application/json",
+    data: JSON.stringify(taskInput),
+    dataType : 'json',
+    complete: function(result) {
+        console.log(result);
+
+        $("#tableinfo")[0].reset()
+        saveToHtml(result.responseJSON.resultID, taskInput.appName, taskInput.teamName, taskInput.releaseDate, taskInput.money)
+        alert("Saved!")
+    },
+    error: function(e) {
+    $("#taskRes").html("<strong> Error: "+  e.responseText +"</strong>");
+     }
+    })
+}
+
 // "Favorite animal" input sets the value of the submit button
 //selectEl.addEventListener('change', function onSelect(e) {
 //    confirmBtn.value = selectEl.value;
 //});
-      // "Confirm" button of form triggers "close" on dialog because of [method="dialog"]
-$( "#favDialog" ).dialog({
-  autoOpen: false
-});
 
-favDialog.dialog({
-    beforeClose: function() {
 
-    var outputBox = document.getElementById('field1');
 
-    const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
-
-    if ($tableID.find('tbody tr').length === 0) {
-        $('tbody').append(newTr);
-    }
-
-   $tableID.find('table').append($clone);
-   }
-
-})
 //$('#dialog').dialog('close');
 
+
  $('.table-add i').on('click', () => {
-      favDialog.show();
+
+    $("#favDialog").fadeIn()
+
+
+ });
+
+ $("#confirmBtn").on("click",() => {
+    $("#favDialog").fadeOut()
+    ajaxPost();
 
  });
 
@@ -54,6 +79,7 @@ favDialog.dialog({
 
    $(this).parents('tr').detach();
  });
+
 
  $tableID.on('click', '.table-up', function () {
 
@@ -106,3 +132,5 @@ favDialog.dialog({
    $EXPORT.text(JSON.stringify(data));
  });
  })
+
+

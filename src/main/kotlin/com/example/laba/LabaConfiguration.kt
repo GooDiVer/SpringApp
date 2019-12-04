@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class LabaConfiguration {
     @Bean
-    fun databaseInitializer(studentRepository: StudentRepository) = ApplicationRunner {
+    fun databaseInitializer(studentRepository: StudentRepository, appRepository: AppRepository) = ApplicationRunner {
         studentRepository.save(Student(
                 firstName = "Дмитрий",
                 lastName = "Верба",

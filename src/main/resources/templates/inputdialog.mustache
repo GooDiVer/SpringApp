@@ -1,20 +1,14 @@
 
-<dialog id="favDialog" hidden="hidden">
-    <form method="dialog">
-        <p><label>Favorite animal:
-            <select>
-                <option></option>
-                <option>Brine shrimp</option>
-                <option>Red panda</option>
-                <option>Spider monkey</option>
-            </select>
-        </label></p>
+<div id="favDialog" style="display: none">
+    <form method="dialog" id="tableinfo">
+        <input type="text" name="appName" class="appName"><br>
+        <input type="text" name="developerName" class="developerName"><br>
+        <input type="text" name="releaseDate" class="releaseDate"><br>
+        <input type="text" name="money" class="money"><br>
         <menu>
             <button value="cancel">Cancel</button>
             <button id="confirmBtn" value="default">Confirm</button>
         </menu>
     </form>
-</dialog>
+</div>
 
-
-<output aria-live="polite"></output>

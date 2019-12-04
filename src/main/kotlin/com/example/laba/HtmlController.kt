@@ -6,7 +6,7 @@ import org.springframework.ui.set
 import org.springframework.web.bind.annotation.*
 
 @Controller
-class HtmlController(private val repository: StudentRepository, private val laba: LabaProperties) {
+class HtmlController(private val repository: StudentRepository, private val appRepository: AppRepository, private val laba: LabaProperties) {
     @GetMapping("/About", "/")
     fun about(model: Model): String {
         model["name"] = "Dima"
@@ -38,6 +38,14 @@ class HtmlController(private val repository: StudentRepository, private val laba
     @ResponseBody
     fun getTaskResult(@RequestBody taskText: TaskClass): String {
         return taskText.getResult()
+    }
+
+    @PostMapping("/savedatatotable")
+    @ResponseBody
+    fun saveDataToTable(@RequestBody taskText: App): ResponceText {
+        appRepository.save(taskText)
+        println("Saved app: $taskText")
+        return ResponceText("saved", taskText.id)
     }
 
 
