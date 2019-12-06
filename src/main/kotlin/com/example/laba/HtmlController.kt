@@ -20,7 +20,6 @@ class HtmlController(private val repository: StudentRepository, private val appR
     fun task(model: Model): String {
         model["name"] = "Dima"
         val student = repository.findAllBy()
-        model["student"] = student.first()
         model["links"] = listOf(laba.firstPage, laba.secondPage, laba.thirdPage)
         return "task"
     }
@@ -28,8 +27,8 @@ class HtmlController(private val repository: StudentRepository, private val appR
     @GetMapping("/Table")
     fun stable(model: Model): String {
         model["name"] = "Dima"
-        val student = repository.findAllBy()
-        model["student"] = student.first()
+        val apps = appRepository.findAll()
+        model["apps"] = apps
         model["links"] = listOf(laba.firstPage, laba.secondPage, laba.thirdPage)
         return "stTable"
     }
@@ -40,13 +39,7 @@ class HtmlController(private val repository: StudentRepository, private val appR
         return taskText.getResult()
     }
 
-    @PostMapping("/savedatatotable")
-    @ResponseBody
-    fun saveDataToTable(@RequestBody taskText: App): ResponceText {
-        appRepository.save(taskText)
-        println("Saved app: $taskText")
-        return ResponceText("saved", taskText.id)
-    }
+
 
 
 }

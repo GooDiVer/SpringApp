@@ -22,3 +22,11 @@ data class App(
         var id: Long = 0
 )
 
+data class UpdatedApp(
+        var appName: String = "",
+        var teamName: String = "",
+        var releaseDate: String = "",
+        var money: String = ""
+//        var id: Long = 0
+)
+

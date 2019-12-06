@@ -7,6 +7,5 @@ interface StudentRepository: CrudRepository<Student, Long> {
 }
 
 interface AppRepository: CrudRepository<App, Long> {
-    fun findAllBy(): MutableList<App>
 }
 
