@@ -2,9 +2,10 @@
 
 <div id="taskRes">
 <form name="student"  method="get">
-    Последовательность чисел: <input id = "taskText" type="text" name="numbers" /><br/>
-    Решение: <output type="text" name="solution" /><br/>
-    <input id = "getResBtn" type="submit" value="Save" />
+    Последовательность чисел (через запятую):
+    <input id = "taskText" type="text" name="numbers" /> <br>
+    <div type="text" name="solution" class="outputTask"></div>
+    <button id = "getResBtn">Найти максимальное число</button>
 </form>
 </div>
 {{> navbar}}

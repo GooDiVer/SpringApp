@@ -18,7 +18,7 @@ function ajaxGet() {
         }),
         dataType: 'json',
         complete: function(result) {
-            $('#taskRes').append('<h1>' + result.responseText + '</h1>')
+            $(".outputTask").html('<p>Решение: ' + result.responseText + '</p>')
         },
         error: function(e) {
             $("#taskRes").html("<strong> Error: " + e.responseText + "</strong>");
