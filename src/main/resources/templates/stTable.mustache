@@ -1,3 +1,41 @@
 {{> header}}
-<h1>Таблица</h1>
+{{>inputdialog}}
+<h1 >Таблица</h1>
+<!-- Editable table -->
+<div class="card" style="position: relative;">
+    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Рейтинг приложений</h3>
+    <div class="card-body">
+        <div id="table" class="table-editable">
+
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                <tr>
+                    <th class="text-center">Приложение</th>
+                    <th class="text-center">Разработчик</th>
+                    <th class="text-center">Год выпуска</th>
+                    <th class="text-center">Стартовый капитал</th>
+                    <th class="text-center"><span class="table-add mb-3 mr-2"><a href="#!" class="text-success"><i
+                            class="fas fa-plus fa-2x" aria-hidden="true">Добавить</i></a></span></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#apps}}
+                    <tr class="hide" id="{{id}}">
+                        <th class="pt-3-half" id = "td1{{id}}" contenteditable="true">{{appName}}</th>
+                        <th class="pt-3-half" id = "td2{{id}}" contenteditable="true">{{teamName}}</th>
+                        <th class="pt-3-half" id = "td3{{id}}" contenteditable="true">{{releaseDate}}</th>
+                        <th class="pt-3-half" id = "td4{{id}}" contenteditable="true">{{money}}</th>
+                        <th>
+                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
+                            <span class="table-edit"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Редактировать</button></span>
+                        </th>
+                    </tr>
+                {{/apps}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Editable table -->
+{{> navbar}}
 {{> footer}}

@@ -1,9 +1,12 @@
 {{> header}}
 
-<form name="student" action="add" method="post">
-    Последовательность чисел: <input type="text" name="numbers" /><br/>
+<div id="taskRes">
+<form name="student"  method="get">
+    Последовательность чисел: <input id = "taskText" type="text" name="numbers" /><br/>
     Решение: <output type="text" name="solution" /><br/>
-    <input type="submit" value="Save" />
+    <input id = "getResBtn" type="submit" value="Save" />
 </form>
+</div>
+{{> navbar}}
 
 {{> footer}}

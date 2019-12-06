@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class LabaConfiguration {
     @Bean
-    fun databaseInitializer(studentRepository: StudentRepository) = ApplicationRunner {
+    fun databaseInitializer(studentRepository: StudentRepository, appRepository: AppRepository) = ApplicationRunner {
         studentRepository.save(Student(
                 firstName = "Дмитрий",
                 lastName = "Верба",
-                myGroup = "ИКБО-02-17",
+                myGroup = "Android",
                 taskVar = 1,
                 taskDesc = "найти максимальное значение среди множества чисел"
         ))
